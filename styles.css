@@ -286,3 +286,55 @@ transition:.2s ease;
   color:#999999;
   margin-top:5px;
 }
+
+/* ---------- VIDEO CARD ---------- */
+
+.video-card{
+  max-width:500px;
+  margin:30px auto;
+  padding:20px;
+
+  background:#181818;
+  border-radius:16px;
+
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+
+.video-frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.video-frame iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+  border-radius:12px;
+  display:block;
+}
+
+.video-overlay{
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.05)
+  );
+
+  pointer-events:none;
+  border-radius:12px;
+}
+
+.video-title{
+  margin-top:15px;
+  color:#ffffff;
+  font-size:1.2rem;
+}
+
+.video-subtitle{
+  margin-top:5px;
+  color:#999999;
+}
