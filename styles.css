@@ -220,3 +220,69 @@ font-weight:600;
 transition:.2s ease;
 }
 .listen-btn:hover{transform:translateY(-2px);opacity:.9;}
+
+/* ---------- VIDEO OFICIAL ---------- */
+
+.video-card{
+  max-width:500px;
+  margin:30px auto;
+  padding:20px;
+
+  background:#181818;
+  border-radius:16px;
+
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+
+.video-thumbnail{
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.video-thumbnail img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+  transition:transform .3s ease;
+}
+
+.video-thumbnail:hover img{
+  transform:scale(1.03);
+}
+
+.play-button{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:70px;
+  height:70px;
+
+  border-radius:50%;
+
+  background:rgba(255,0,0,.9);
+
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+  font-weight:bold;
+}
+
+.video-title{
+  color:#ffffff;
+  font-size:1.2rem;
+  margin-top:15px;
+}
+
+.video-subtitle{
+  color:#999999;
+  margin-top:5px;
+}
