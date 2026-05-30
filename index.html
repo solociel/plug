@@ -49,6 +49,37 @@ target="_blank" rel="noopener noreferrer"title="Apple"><img src="assets/icons/ap
          <span>apple music</span>
      </a> -->
     </section>
+    <section class="music-preview">
+
+  <img
+    src="assets/images/cover.jpg"
+    alt="Portada"
+    class="music-cover"
+  >
+
+  <div class="music-title">Nombre de la canción</div>
+
+  <div class="music-subtitle">
+    Preview exclusivo
+  </div>
+
+  <audio id="previewAudio" controls controlsList="nodownload">
+    <source src="assets/audio/preview.mp3" type="audio/mpeg">
+  </audio>
+
+</section>
+
+<script>
+const player = document.getElementById("previewAudio");
+const previewLimit = 15;
+
+player.addEventListener("timeupdate", () => {
+  if (player.currentTime >= previewLimit) {
+    player.pause();
+    player.currentTime = 0;
+  }
+});
+</script>
   </main>
 
   <footer class="site-footer">
