@@ -338,3 +338,23 @@ transition:.2s ease;
   margin-top:5px;
   color:#999999;
 }
+
+.play-btn{
+  margin-top:15px;
+  padding:12px 20px;
+
+  background:#ffffff;
+  color:#000000;
+
+  border:none;
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:14px;
+  font-weight:600;
+}
+
+.play-btn:hover{
+  opacity:.9;
+}
