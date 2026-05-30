@@ -114,8 +114,6 @@ target="_blank" rel="noopener noreferrer"title="Apple"><img src="assets/icons/ap
   <footer class="site-footer">
     <p>&copy; 2025 cielsolo</p>
   </footer>
-
-</body>
 <script>
 const audio = document.getElementById("previewAudio");
 const playButton = document.getElementById("playButton");
@@ -128,7 +126,7 @@ let endTime = 0;
 audio.addEventListener("loadedmetadata", () => {
 
   startTime = Math.floor(
-    Math.random() * (audio.duration - PREVIEW_LENGTH)
+    Math.random() * Math.max(1, audio.duration - PREVIEW_LENGTH)
   );
 
   endTime = startTime + PREVIEW_LENGTH;
@@ -138,19 +136,26 @@ audio.addEventListener("loadedmetadata", () => {
 
 playButton.addEventListener("click", () => {
 
-  if(audio.paused){
+  if (audio.paused) {
+
+    // Nuevo punto aleatorio cada vez que se reproduce
+    startTime = Math.floor(
+      Math.random() * Math.max(1, audio.duration - PREVIEW_LENGTH)
+    );
+
+    endTime = startTime + PREVIEW_LENGTH;
+
+    audio.currentTime = startTime;
 
     audio.play();
 
-    playButton.textContent =
-      "⏸ Pausar Preview";
+    playButton.textContent = "⏸ Pausar Preview";
 
-  }else{
+  } else {
 
     audio.pause();
 
-    playButton.textContent =
-      "▶ Reproducir Preview";
+    playButton.textContent = "▶ Reproducir Preview";
 
   }
 
@@ -158,18 +163,17 @@ playButton.addEventListener("click", () => {
 
 audio.addEventListener("timeupdate", () => {
 
-  if(audio.currentTime >= endTime){
+  if (audio.currentTime >= endTime) {
 
     audio.pause();
 
-    audio.currentTime = startTime;
-
-    playButton.textContent =
-      "▶ Reproducir Preview";
+    playButton.textContent = "▶ Reproducir Preview";
 
   }
 
 });
 </script>
+</body>
+
 
 </html>
