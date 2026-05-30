@@ -60,4 +60,11 @@ window.addEventListener("DOMContentLoaded", () => {
       updateClickStatsUI();
     }
   }
+  backButton.addEventListener("click", () => {
+  audio.currentTime = Math.max(startTime, audio.currentTime - 10);
+});
+
+forwardButton.addEventListener("click", () => {
+  audio.currentTime = Math.min(endTime, audio.currentTime + 10);
+});
 });
