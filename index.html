@@ -113,14 +113,58 @@ target="_blank" rel="noopener noreferrer"title="Apple"><img src="assets/icons/ap
 
 </body>
 <script>
-const audio=document.getElementById("previewAudio");
-let startTime=0;
-audio.addEventListener("loadedmetadata",()=>{
- startTime=Math.floor(Math.random()*(audio.duration-30));
- audio.currentTime=startTime;
+const audio = document.getElementById("previewAudio");
+const playButton = document.getElementById("playButton");
+
+const PREVIEW_LENGTH = 45;
+
+let startTime = 0;
+let endTime = 0;
+
+audio.addEventListener("loadedmetadata", () => {
+
+  startTime = Math.floor(
+    Math.random() * (audio.duration - PREVIEW_LENGTH)
+  );
+
+  endTime = startTime + PREVIEW_LENGTH;
+
+  audio.currentTime = startTime;
 });
-audio.addEventListener("timeupdate",()=>{
- if(audio.currentTime>=startTime+30){audio.pause();}
+
+playButton.addEventListener("click", () => {
+
+  if(audio.paused){
+
+    audio.play();
+
+    playButton.textContent =
+      "⏸ Pausar Preview";
+
+  }else{
+
+    audio.pause();
+
+    playButton.textContent =
+      "▶ Reproducir Preview";
+
+  }
+
+});
+
+audio.addEventListener("timeupdate", () => {
+
+  if(audio.currentTime >= endTime){
+
+    audio.pause();
+
+    audio.currentTime = startTime;
+
+    playButton.textContent =
+      "▶ Reproducir Preview";
+
+  }
+
 });
 </script>
 
