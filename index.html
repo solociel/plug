@@ -129,6 +129,8 @@ target="_blank" rel="noopener noreferrer"title="Apple"><img src="assets/icons/ap
 <script>
 const audio = document.getElementById("previewAudio");
 const playButton = document.getElementById("playButton");
+const backButton = document.getElementById("backButton");
+const forwardButton = document.getElementById("forwardButton");
 
 const PREVIEW_LENGTH = 45;
 
@@ -144,13 +146,13 @@ audio.addEventListener("loadedmetadata", () => {
   endTime = startTime + PREVIEW_LENGTH;
 
   audio.currentTime = startTime;
+
 });
 
 playButton.addEventListener("click", () => {
 
   if (audio.paused) {
 
-    // Nuevo punto aleatorio cada vez que se reproduce
     startTime = Math.floor(
       Math.random() * Math.max(1, audio.duration - PREVIEW_LENGTH)
     );
@@ -161,15 +163,33 @@ playButton.addEventListener("click", () => {
 
     audio.play();
 
-    playButton.textContent = "⏸ Pausar Preview";
+    playButton.textContent = "⏸ Pause";
 
   } else {
 
     audio.pause();
 
-    playButton.textContent = "▶ Reproducir Preview";
+    playButton.textContent = "▶ Play";
 
   }
+
+});
+
+backButton.addEventListener("click", () => {
+
+  audio.currentTime = Math.max(
+    startTime,
+    audio.currentTime - 10
+  );
+
+});
+
+forwardButton.addEventListener("click", () => {
+
+  audio.currentTime = Math.min(
+    endTime,
+    audio.currentTime + 10
+  );
 
 });
 
@@ -179,7 +199,7 @@ audio.addEventListener("timeupdate", () => {
 
     audio.pause();
 
-    playButton.textContent = "▶ Reproducir Preview";
+    playButton.textContent = "▶ Play";
 
   }
 
